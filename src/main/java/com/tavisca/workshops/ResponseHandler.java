@@ -6,9 +6,6 @@ import java.nio.file.Files;
 import java.util.Date;
 
 public class ResponseHandler {
-    public ResponseHandler(){
-
-    }
 
     public String fileResponse(File fileToSend) throws IOException {
         String response;
@@ -19,8 +16,6 @@ public class ResponseHandler {
         else{
             response = "there is no file";
         }
-
-
         return response;
     }
 
