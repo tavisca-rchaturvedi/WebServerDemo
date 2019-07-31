@@ -36,7 +36,7 @@ public class ResponseHandler {
         String response = "Server: My Java HTTP Server: 1.0\r\n";
         response += "Date: " + (new Date()).toString() + "\r\n";
         response += "Content-Type: text/html\r\n";
-        response += "Content-length: " + fileToSend.length()+"\r\n";
+        response += "Content-length: " + String.join("",Files.readAllLines(fileToSend.toPath())).length() +"\r\n";
         response += "\r\n";
         response += String.join("",Files.readAllLines(fileToSend.toPath()));
 

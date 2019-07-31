@@ -24,6 +24,10 @@ public class Server implements Runnable {
             System.out.println(Thread.currentThread().getId() + " is the thread running for " + this.clientSocket.getLocalPort() + " with request " + requestHandler.getRequestURI());
             requestAndResponseHelper.processAndRespondToClient(new ResponseHandler(), requestHandler, this.clientSocket);
 
+            this.clientSocket.close();
+            bufferedReader.close();
+
+
         } catch (IOException e) {
             e.printStackTrace();
         }
