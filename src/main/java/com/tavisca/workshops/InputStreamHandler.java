@@ -10,4 +10,8 @@ public class InputStreamHandler {
     public BufferedReader getInputStream(Socket clientSocket) throws IOException {
         return new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
     }
+
+    public void closeInputStream(BufferedReader bufferedReader) throws IOException {
+        bufferedReader.close();
+    }
 }

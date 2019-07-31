@@ -1,7 +1,5 @@
 package com.tavisca.workshops;
-
 import com.tavisca.workshops.responses.*;
-
 import java.io.File;
 import java.io.IOException;
 import java.net.Socket;

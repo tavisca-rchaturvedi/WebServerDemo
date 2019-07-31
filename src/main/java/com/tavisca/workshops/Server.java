@@ -1,21 +1,17 @@
 package com.tavisca.workshops;
-
 import java.io.*;
 import java.net.ServerSocket;
 import java.net.Socket;
 
 public class Server implements Runnable {
-
     int port;
     Socket clientSocket;
-
     public Server(int port, Socket clientSocket){
         this.port = port;
         this.clientSocket = clientSocket;
     }
 
     public void run(){
-
         try {
             RequestAndResponseHelper requestAndResponseHelper = new RequestAndResponseHelper();
             InputStreamHandler inputStreamHandler = new InputStreamHandler();
@@ -25,7 +21,7 @@ public class Server implements Runnable {
             requestAndResponseHelper.processAndRespondToClient(new ResponseCreator(), requestParser, this.clientSocket);
 
             this.clientSocket.close();
-            bufferedReader.close();
+            inputStreamHandler.closeInputStream(bufferedReader);
 
         } catch (IOException e) {
             e.printStackTrace();
