@@ -14,12 +14,7 @@ public class ResponseHandler {
         String response;
         if(fileToSend.exists()){
             response = "HTTP/1.1 200 OK\r\n";
-            response += "Server: My Java HTTP Server: 1.0\r\n";
-            response += "Date: " + (new Date()).toString() + "\r\n";
-            response += "Content-Type: text/html\r\n";
-            response += "Content-length: " + fileToSend.length()+"\r\n";
-            response += "\r\n";
-            response += String.join("",Files.readAllLines(fileToSend.toPath()));
+            response += getCommonResponse(fileToSend);
         }
         else{
             response = "there is no file";
@@ -33,12 +28,7 @@ public class ResponseHandler {
         String response;
         if(fileToSend.exists()){
             response = "HTTP/1.1 404\r\n";
-            response += "Server: My Java HTTP Server: 1.0\r\n";
-            response += "Date: " + (new Date()).toString() + "\r\n";
-            response += "Content-Type: text/html\r\n";
-            response += "Content-length: " + fileToSend.length()+"\r\n";
-            response += "\r\n";
-            response += String.join("",Files.readAllLines(fileToSend.toPath()));
+            response += getCommonResponse(fileToSend);
         }
         else{
             response = "There is no file";
@@ -46,4 +36,16 @@ public class ResponseHandler {
 
         return response;
     }
+
+    public String getCommonResponse(File fileToSend) throws IOException {
+        String response = "Server: My Java HTTP Server: 1.0\r\n";
+        response += "Date: " + (new Date()).toString() + "\r\n";
+        response += "Content-Type: text/html\r\n";
+        response += "Content-length: " + fileToSend.length()+"\r\n";
+        response += "\r\n";
+        response += String.join("",Files.readAllLines(fileToSend.toPath()));
+
+        return response;
+    }
+
 }
