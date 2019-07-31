@@ -16,17 +16,16 @@ public class Server implements Runnable {
 
     public void run(){
 
-        RequestAndResponseHelper requestAndResponseHelper = new RequestAndResponseHelper();
-
         try {
-            BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(this.clientSocket.getInputStream()));
-            RequestHandler requestHandler = new RequestHandler(bufferedReader.readLine());
-            System.out.println(Thread.currentThread().getId() + " is the thread running for " + this.clientSocket.getLocalPort() + " with request " + requestHandler.getRequestURI());
-            requestAndResponseHelper.processAndRespondToClient(new ResponseHandler(), requestHandler, this.clientSocket);
+            RequestAndResponseHelper requestAndResponseHelper = new RequestAndResponseHelper();
+            InputStreamHandler inputStreamHandler = new InputStreamHandler();
+            BufferedReader bufferedReader = inputStreamHandler.getInputStream(this.clientSocket);
+            RequestParser requestParser = new RequestParser(bufferedReader.readLine());
+            System.out.println(Thread.currentThread().getId() + " is the thread running for " + this.clientSocket.getLocalPort() + " with request " + requestParser.getRequestURI());
+            requestAndResponseHelper.processAndRespondToClient(new ResponseCreator(), requestParser, this.clientSocket);
 
             this.clientSocket.close();
             bufferedReader.close();
-
 
         } catch (IOException e) {
             e.printStackTrace();

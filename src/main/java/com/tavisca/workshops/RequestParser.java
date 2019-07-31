@@ -1,13 +1,13 @@
 package com.tavisca.workshops;
 
-public class RequestHandler {
+public class RequestParser {
 
     String method = "";
     String requestURI = "";
     String httpVersion = "";
 
 
-    public RequestHandler(String request){
+    public RequestParser(String request){
         if(request != null && !request.isEmpty()){
             String[] partsOfString = request.split(" ");
             this.method = partsOfString[0];

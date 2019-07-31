@@ -5,29 +5,18 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.util.Date;
 
-public class ResponseHandler {
+public class ResponseCreator {
 
     public String fileResponse(File fileToSend) throws IOException {
-        String response;
-        if(fileToSend.exists()){
-            response = "HTTP/1.1 200 OK\r\n";
-            response += getCommonResponse(fileToSend);
-        }
-        else{
-            response = "there is no file";
-        }
+
+        String response = "HTTP/1.1 200 OK\r\n";
+        response += getCommonResponse(fileToSend);
         return response;
     }
 
     public String method404(File fileToSend) throws IOException {
-        String response;
-        if(fileToSend.exists()){
-            response = "HTTP/1.1 404\r\n";
-            response += getCommonResponse(fileToSend);
-        }
-        else{
-            response = "There is no file";
-        }
+        String response = "HTTP/1.1 404\r\n";
+        response += getCommonResponse(fileToSend);
 
         return response;
     }
