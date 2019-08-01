@@ -1,14 +1,12 @@
 package com.tavisca.workshops;
 import com.tavisca.workshops.responses.*;
 import java.io.File;
-import java.io.IOException;
-import java.net.Socket;
 
 public class RequestAndResponseHelper {
 
     String baseAddress = "www/";
-    public void processAndRespondToClient(ResponseCreator responseCreator, RequestParser requestParser, Socket clientSocket) throws IOException {
-        byte[] responseData;
+    public byte[] processAndRespondToClient(ResponseCreator responseCreator, RequestParser requestParser) {
+        byte[] responseData = new byte[0];
         if(requestParser.getMethod().equals("GET")){
             if(requestParser.getRequestURI().trim().equals("/")){
                 responseData = (new RootURIResponse()).getResponse(responseCreator, requestParser);
@@ -19,7 +17,7 @@ public class RequestAndResponseHelper {
             else{
                 responseData = (new ErrorResponse()).getResponse(responseCreator, requestParser);
             }
-            clientSocket.getOutputStream().write(responseData);
         }
+        return responseData;
     }
 }

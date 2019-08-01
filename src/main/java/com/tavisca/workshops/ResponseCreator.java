@@ -6,15 +6,23 @@ import java.util.Date;
 
 public class ResponseCreator {
 
-    public String fileResponse(File fileToSend) throws IOException {
+    public String fileResponse(File fileToSend)  {
         String response = "HTTP/1.1 200 OK\r\n";
-        response += getCommonResponse(fileToSend);
+        try {
+            response += getCommonResponse(fileToSend);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         return response;
     }
 
-    public String method404(File fileToSend) throws IOException {
+    public String method404(File fileToSend) {
         String response = "HTTP/1.1 404\r\n";
-        response += getCommonResponse(fileToSend);
+        try {
+            response += getCommonResponse(fileToSend);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         return response;
     }
 

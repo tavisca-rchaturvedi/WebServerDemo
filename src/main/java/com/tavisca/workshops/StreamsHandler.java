@@ -1,11 +1,9 @@
 package com.tavisca.workshops;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
+import java.io.*;
 import java.net.Socket;
 
-public class InputStreamHandler {
+public class StreamsHandler {
 
     public BufferedReader getInputStream(Socket clientSocket) throws IOException {
         return new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
@@ -13,5 +11,13 @@ public class InputStreamHandler {
 
     public void closeInputStream(BufferedReader bufferedReader) throws IOException {
         bufferedReader.close();
+    }
+
+    public OutputStream getOutputStream(Socket clientSocket) throws IOException {
+        return clientSocket.getOutputStream();
+    }
+
+    public void closeOutputStream(OutputStream outputStream) throws IOException {
+        outputStream.close();
     }
 }
