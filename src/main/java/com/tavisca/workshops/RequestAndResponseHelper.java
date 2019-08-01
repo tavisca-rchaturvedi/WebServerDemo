@@ -5,7 +5,7 @@ import java.io.File;
 public class RequestAndResponseHelper {
 
     String baseAddress = "www/";
-    public byte[] processAndRespondToClient(ResponseCreator responseCreator, RequestParser requestParser) {
+    public byte[] processAndCreateResponse(ResponseCreator responseCreator, RequestParser requestParser) {
         byte[] responseData = new byte[0];
         if(requestParser.getMethod().equals("GET")){
             if(requestParser.getRequestURI().trim().equals("/")){

@@ -5,8 +5,6 @@ import com.tavisca.workshops.RequestParser;
 import com.tavisca.workshops.ResponseCreator;
 import org.junit.Test;
 
-import java.util.Arrays;
-
 import static org.junit.Assert.*;
 
 
@@ -91,7 +89,7 @@ public class IndividualResponseTest {
                 "\r\n" +
                 "<html><body><H1>Hello! How are you?</H1></body></html>").split("\r\n");
         RequestAndResponseHelper helper = new RequestAndResponseHelper();
-        String[] responseData = new String(helper.processAndRespondToClient(new ResponseCreator(), new RequestParser(request))).split("\r\n");
+        String[] responseData = new String(helper.processAndCreateResponse(new ResponseCreator(), new RequestParser(request))).split("\r\n");
         for(int i = 0; i < expectedResponse.length; i++){
             if(expectedResponse[i].contains("Date:")){
                 assertNotEquals(expectedResponse[i],responseData[i]);
@@ -113,7 +111,7 @@ public class IndividualResponseTest {
                 "\r\n" +
                 "<!DOCTYPE html><html lang=\"en\"><head><meta charset=\"UTF-8\"><title>Title</title></head><body><H1>You are successfully connected!!</H1></body></html>").split("\r\n");
         RequestAndResponseHelper helper = new RequestAndResponseHelper();
-        String[] responseData = new String(helper.processAndRespondToClient(new ResponseCreator(), new RequestParser(request))).split("\r\n");
+        String[] responseData = new String(helper.processAndCreateResponse(new ResponseCreator(), new RequestParser(request))).split("\r\n");
         System.out.println(responseData[0]);
 
         for(int i = 0; i < expectedResponse.length; i++){
@@ -137,7 +135,7 @@ public class IndividualResponseTest {
                 "\r\n" +
                 "<html><body><h1>Page not found!!</h1></body></html>").split("\r\n");
         RequestAndResponseHelper helper = new RequestAndResponseHelper();
-        String[] responseData = new String(helper.processAndRespondToClient(new ResponseCreator(), new RequestParser(request))).split("\r\n");
+        String[] responseData = new String(helper.processAndCreateResponse(new ResponseCreator(), new RequestParser(request))).split("\r\n");
         for(int i = 0; i < expectedResponse.length; i++){
             if(expectedResponse[i].contains("Date:")){
                 assertNotEquals(expectedResponse[i],responseData[i]);

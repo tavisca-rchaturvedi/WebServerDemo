@@ -3,10 +3,8 @@ package com.tavisca.workshops;
 import org.junit.Test;
 
 import java.io.File;
-import java.io.IOException;
 
-import static junit.framework.TestCase.assertEquals;
-import static org.junit.Assert.assertNotEquals;
+import static org.junit.Assert.*;
 
 public class ResponseTests {
 
@@ -75,6 +73,7 @@ public class ResponseTests {
             }
             else{
                 assertNotEquals(expectedResponse[i],response[i]);
+
             }
         }
     }
