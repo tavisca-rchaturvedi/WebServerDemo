@@ -21,7 +21,6 @@ public class Server implements Runnable {
             OutputStream outputStream = this.clientSocket.getOutputStream();
             byte[] responseData = clientHandler.prepareResponseFromRequest(requestReader, this.clientSocket);
             clientHandler.respondToClient(responseData, outputStream);
-
             this.closeInputAndOutputStreams(requestReader, outputStream);
 
         } catch (IOException e) {

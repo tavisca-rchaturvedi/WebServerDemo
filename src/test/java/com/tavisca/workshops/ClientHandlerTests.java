@@ -38,8 +38,6 @@ public class ClientHandlerTests {
 
         try {
             MockSocket mockSocket = new MockSocket();
-
-
             BufferedReader reader = new BufferedReader(new InputStreamReader(mockSocket.getInputStream()));
             ClientHandler clientHandler = new ClientHandler();
             String[] responseData = new String(clientHandler.prepareResponseFromRequest(reader, mockSocket)).split("\r\n");
