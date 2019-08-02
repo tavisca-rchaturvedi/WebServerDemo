@@ -6,6 +6,18 @@ import java.util.Date;
 
 public class ResponseCreator {
 
+    public String customFileResponse(String fileContent){
+        String response = "HTTP/1.1 200 OK\r\n";
+        response += "Server: My Java HTTP Server: 1.0\r\n";
+        response += "Date: " + (new Date()).toString() + "\r\n";
+        response += "Content-Type: text/html\r\n";
+        response += "Content-length: " + fileContent.length() + "\r\n";
+        response += "\r\n";
+        response += fileContent;
+
+        return response;
+    }
+
     public String fileResponse(File fileToSend)  {
         String response = "HTTP/1.1 200 OK\r\n";
         try {

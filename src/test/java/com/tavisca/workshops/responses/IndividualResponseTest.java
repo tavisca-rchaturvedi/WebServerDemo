@@ -5,6 +5,9 @@ import com.tavisca.workshops.RequestParser;
 import com.tavisca.workshops.ResponseCreator;
 import org.junit.Test;
 
+import java.io.File;
+import java.io.IOException;
+
 import static org.junit.Assert.*;
 
 
@@ -135,7 +138,8 @@ public class IndividualResponseTest {
                 "\r\n" +
                 "<html><body><h1>Page not found!!</h1></body></html>").split("\r\n");
         RequestAndResponseHelper helper = new RequestAndResponseHelper();
-        String[] responseData = new String(helper.processAndCreateResponse(new ResponseCreator(), new RequestParser(request))).split("\r\n");
+        String[] responseData = new String[0];
+        responseData = new String(helper.processAndCreateResponse(new ResponseCreator(), new RequestParser(request))).split("\r\n");
         for(int i = 0; i < expectedResponse.length; i++){
             if(expectedResponse[i].contains("Date:")){
                 assertNotEquals(expectedResponse[i],responseData[i]);
@@ -148,4 +152,15 @@ public class IndividualResponseTest {
 
 
 
+    @Test
+    public void CustomResourceFoundResponseTest(){
+        CustomResourceFoundResponse resourceFoundResponse = new CustomResourceFoundResponse();
+        String expected = "<html><body><h1>MyClass</h1><ol><li></li><li></li><li></li></ol></body></html>";
+        try {
+            String actual = resourceFoundResponse.processFile(new File("www/abc.rishabh"));
+            assertEquals(expected,actual);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 }
