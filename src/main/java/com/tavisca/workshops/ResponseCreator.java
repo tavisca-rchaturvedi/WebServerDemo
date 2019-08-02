@@ -1,8 +1,13 @@
 package com.tavisca.workshops;
-import java.io.File;
-import java.io.IOException;
+import javax.imageio.ImageIO;
+import java.awt.*;
+import java.awt.image.BufferedImage;
+import java.io.*;
 import java.nio.file.Files;
+import java.util.Base64;
 import java.util.Date;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class ResponseCreator {
 
@@ -27,12 +32,32 @@ public class ResponseCreator {
     }
 
     public String getCommonResponse(File fileToSend) throws IOException {
+        BufferedInputStream bufferedInputStream = new BufferedInputStream(new FileInputStream(fileToSend));
+        Pattern pattern = Pattern.compile("(.*).jpeg|(.*).png|(.*).jpg|(.*).jfif", Pattern.CASE_INSENSITIVE);
+        Matcher matcher = pattern.matcher(fileToSend.getName());
         String response = "Server: My Java HTTP Server: 1.0\r\n";
         response += "Date: " + (new Date()).toString() + "\r\n";
-        response += "Content-Type: text/html\r\n";
-        response += "Content-length: " + String.join("",Files.readAllLines(fileToSend.toPath())).length() +"\r\n";
-        response += "\r\n";
-        response += String.join("",Files.readAllLines(fileToSend.toPath()));
+        if(matcher.find()){
+            BufferedImage bImage = ImageIO.read(new File(fileToSend.getPath()));
+            ByteArrayOutputStream bos = new ByteArrayOutputStream();
+            ImageIO.write(bImage, "jpeg", bos );
+            byte [] data = bos.toByteArray();
+            String encodedfile = new String(Base64.getEncoder().encode(data));
+
+            String htmlResponse = "<html><head></head><body><img src=\"data:image/jpeg;base64," + encodedfile + "\" alt=\"" + fileToSend.getName()+"\"></body></html>";
+            response += "Content-Type: text/html\r\n";
+            response += "Content-length: " +htmlResponse.length() +"\r\n";
+            response += "\r\n";
+            response += htmlResponse;
+        }
+        else{
+            response += "Content-Type: text/html\r\n";
+            response += "Content-length: " + String.join("",Files.readAllLines(fileToSend.toPath())).length() +"\r\n";
+            response += "\r\n";
+            response += String.join("",Files.readAllLines(fileToSend.toPath()));
+        }
+
+
 
         return response;
     }
