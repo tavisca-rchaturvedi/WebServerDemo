@@ -2,9 +2,9 @@ package com.tavisca.workshops;
 
 public class RequestParser {
 
-    String method = "";
-    String requestURI = "";
-    String httpVersion = "";
+    private String method = "";
+    private String requestURI = "";
+    private String httpVersion = "";
 
 
     public RequestParser(String request){
