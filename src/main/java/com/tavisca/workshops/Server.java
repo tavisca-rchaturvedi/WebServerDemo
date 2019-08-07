@@ -6,8 +6,8 @@ import java.net.Socket;
 
 
 public class Server implements Runnable {
-    int port;
-    Socket clientSocket;
+    private int port;
+    private Socket clientSocket;
 
     public Server(int port, Socket clientSocket){
         this.port = port;

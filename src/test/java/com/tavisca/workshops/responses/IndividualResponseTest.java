@@ -57,7 +57,7 @@ public class IndividualResponseTest {
 
 
     @Test
-    public void ResourceFoundResponseTest(){
+    public void resourceFoundResponseTest(){
         String request = "GET /hello.html HTTP/1.1";
         String[] expectedResponse =("HTTP/1.1 200 OK\r\n" +
                 "Server: My Java HTTP Server: 1.0\r\n" +
