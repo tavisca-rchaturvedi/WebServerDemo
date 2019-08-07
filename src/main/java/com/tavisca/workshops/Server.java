@@ -5,10 +5,10 @@ import java.net.ServerSocket;
 import java.net.Socket;
 
 
-public class Server implements Runnable {
-    private Socket clientSocket;
+class Server implements Runnable {
+    private final Socket clientSocket;
 
-    public Server(Socket clientSocket){
+    private Server(Socket clientSocket){
         this.clientSocket = clientSocket;
     }
 
@@ -26,7 +26,7 @@ public class Server implements Runnable {
         }
     }
 
-    public void closeInputAndOutputStreams(BufferedReader requestReader, OutputStream outputStream) throws IOException {
+    private void closeInputAndOutputStreams(BufferedReader requestReader, OutputStream outputStream) throws IOException {
         outputStream.close();
         requestReader.close();
         this.clientSocket.close();

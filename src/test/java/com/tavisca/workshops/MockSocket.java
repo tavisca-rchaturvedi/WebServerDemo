@@ -8,16 +8,16 @@ import java.net.Socket;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MockSocket extends Socket {
+class MockSocket extends Socket {
 
-    private List<Byte> bytesList = new ArrayList<>();
+    private final List<Byte> bytesList = new ArrayList<>();
     public InputStream getInputStream(){
         return new ByteArrayInputStream("GET / HTTP/1.1".getBytes());
     }
     public OutputStream getOutputStream(){
         return new OutputStream() {
             @Override
-            public void write(int b) throws IOException {
+            public void write(int b) {
                 bytesList.add((byte)b);
             }
         };

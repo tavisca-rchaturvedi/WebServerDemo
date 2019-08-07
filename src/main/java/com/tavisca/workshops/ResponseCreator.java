@@ -30,7 +30,7 @@ public class ResponseCreator {
         return response;
     }
 
-    public String getCommonResponse(File fileToSend) throws IOException {
+    private String getCommonResponse(File fileToSend) throws IOException {
         Pattern pattern = Pattern.compile("(.*).jpeg|(.*).png|(.*).jpg|(.*).jfif", Pattern.CASE_INSENSITIVE);
         Matcher matcher = pattern.matcher(fileToSend.getName());
         String response = "Server: My Java HTTP Server: 1.0\r\n";
