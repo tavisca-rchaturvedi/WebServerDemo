@@ -5,7 +5,7 @@ import java.util.Map;
 
 public class RequestAndResponseHelper {
 
-    public Map<Boolean, Responder> resourceTypeToResponderMap = new HashMap<Boolean, Responder>(){{
+    public static Map<Boolean, Responder> resourceTypeToResponderMap = new HashMap<Boolean, Responder>(){{
         put(true,new RootURIResponse());
         put(false, new ResourceRequestedResponse());
     }};

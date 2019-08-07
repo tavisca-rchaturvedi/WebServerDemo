@@ -5,7 +5,6 @@ import com.tavisca.workshops.Responder;
 import com.tavisca.workshops.ResponseCreator;
 
 import java.io.File;
-import java.io.IOException;
 
 public class ResourceRequestedResponse implements Responder {
 

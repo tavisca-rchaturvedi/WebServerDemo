@@ -6,11 +6,9 @@ import java.net.Socket;
 
 
 public class Server implements Runnable {
-    private int port;
     private Socket clientSocket;
 
-    public Server(int port, Socket clientSocket){
-        this.port = port;
+    public Server(Socket clientSocket){
         this.clientSocket = clientSocket;
     }
 
@@ -41,7 +39,7 @@ public class Server implements Runnable {
         while(true){
             Socket socket = serverSocket.accept();
             Log.infoLog("Socket Accepted");
-            Thread t = new Thread(new Server(8080, socket));
+            Thread t = new Thread(new Server(socket));
             t.start();
         }
 

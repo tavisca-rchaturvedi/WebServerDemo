@@ -1,6 +1,5 @@
 package com.tavisca.workshops;
 import javax.imageio.ImageIO;
-import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.*;
 import java.nio.file.Files;
@@ -38,7 +37,7 @@ public class ResponseCreator {
         response += "Date: " + (new Date()).toString() + "\r\n";
 
         if(matcher.find()){
-            response = prepareAndReturnImageResponse(fileToSend, response);
+            response += prepareAndReturnImageResponse(fileToSend);
         }
         else{
             response += "Content-Type: text/html\r\n";
@@ -49,7 +48,7 @@ public class ResponseCreator {
         return response;
     }
 
-    private String prepareAndReturnImageResponse(File fileToSend, String response) throws IOException {
+    private String prepareAndReturnImageResponse(File fileToSend) throws IOException {
         BufferedImage bImage = ImageIO.read(new File(fileToSend.getPath()));
         ByteArrayOutputStream bos = new ByteArrayOutputStream();
         ImageIO.write(bImage, "jpeg", bos );
@@ -57,7 +56,7 @@ public class ResponseCreator {
         String encodedFile = new String(Base64.getEncoder().encode(data));
 
         String htmlResponse = "<html><head></head><body><img src=\"data:image/jpeg;base64," + encodedFile + "\" alt=\"" + fileToSend.getName()+"\"></body></html>";
-        response += "Content-Type: text/html\r\n";
+        String response = "Content-Type: text/html\r\n";
         response += "Content-length: " +htmlResponse.length() +"\r\n";
         response += "\r\n";
         response += htmlResponse;
