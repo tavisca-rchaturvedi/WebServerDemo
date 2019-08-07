@@ -17,7 +17,6 @@ import java.nio.file.Files;
 public class CustomResourceFoundResponse implements Responder {
 
     public HashMap<String, String> nameToTagMap = new HashMap<>();
-    public String customHTMLResponse = "";
     public String startHTMLResponse = "";
     public String endingHTMLResponse = "";
     
@@ -63,7 +62,8 @@ public class CustomResourceFoundResponse implements Responder {
             Matcher matcher = tagContentPattern.matcher(line);
             Matcher matcher1 = numberAndTagPattern.matcher(line);
             if(matcher.find()){
-                String tag = "", content = "";
+                String tag = "";
+                String content = "";
                 tag = this.nameToTagMap.get(matcher.group(1));
                 content = matcher.group(2);
                 if(line.endsWith(".")){

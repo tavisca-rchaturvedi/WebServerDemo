@@ -12,9 +12,6 @@ public class MockSocket extends Socket {
 
     private List<Byte> bytesList = new ArrayList<>();
 
-    public MockSocket(){
-
-    }
 
     public InputStream getInputStream(){
         return new ByteArrayInputStream("GET / HTTP/1.1".getBytes());

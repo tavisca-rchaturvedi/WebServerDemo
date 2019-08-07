@@ -19,7 +19,7 @@ public class RequestTests {
     }
 
     @Test
-    public void URIOnARequest(){
+    public void uriOnARequest(){
         String request = "GET / /http/1.1";
         RequestParser requestParser = new RequestParser(request);
         assertEquals("/", requestParser.getRequestURI());

@@ -5,15 +5,14 @@ import java.io.IOException;
 
 public class RequestAndResponseHelper {
 
-    String baseAddress = "www/";
     public byte[] processAndCreateResponse(ResponseCreator responseCreator, RequestParser requestParser) {
         byte[] responseData = new byte[0];
-        System.out.println("isFile: " + new File(this.baseAddress + requestParser.getRequestURI().substring(1)).isFile());
+        System.out.println("isFile: " + new File(Responder.baseAddress + requestParser.getRequestURI().substring(1)).isFile());
         if(requestParser.getMethod().equals("GET")){
             if(requestParser.getRequestURI().trim().equals("/")){
                 responseData = (new RootURIResponse()).getResponse(responseCreator, requestParser);
             }
-            else if(new File(this.baseAddress + requestParser.getRequestURI().substring(1)).isFile()){
+            else if(new File(Responder.baseAddress + requestParser.getRequestURI().substring(1)).isFile()){
                 if(requestParser.getRequestURI().substring(1).contains(".rishabh"))
                     responseData = (new CustomResourceFoundResponse()).getResponse(responseCreator, requestParser);
                 else

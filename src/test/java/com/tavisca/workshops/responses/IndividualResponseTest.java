@@ -60,7 +60,7 @@ public class IndividualResponseTest {
 
 
     @Test
-    public void ResourceFoundResponseTest(){
+    public void resourceFoundResponseTest(){
         String request = "GET /hello.html HTTP/1.1";
         String[] expectedResponse =("HTTP/1.1 200 OK\r\n" +
                 "Server: My Java HTTP Server: 1.0\r\n" +
@@ -153,7 +153,7 @@ public class IndividualResponseTest {
 
 
     @Test
-    public void CustomResourceFoundResponseTest(){
+    public void customResourceFoundResponseTest(){
         CustomResourceFoundResponse resourceFoundResponse = new CustomResourceFoundResponse();
         String expected = "<html><body><h1>MyClass</h1><ol><li></li><li></li><li></li></ol></body></html>";
         try {
