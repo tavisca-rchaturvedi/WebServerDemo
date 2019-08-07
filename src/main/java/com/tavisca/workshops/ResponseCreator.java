@@ -32,23 +32,13 @@ public class ResponseCreator {
     }
 
     public String getCommonResponse(File fileToSend) throws IOException {
-        BufferedInputStream bufferedInputStream = new BufferedInputStream(new FileInputStream(fileToSend));
         Pattern pattern = Pattern.compile("(.*).jpeg|(.*).png|(.*).jpg|(.*).jfif", Pattern.CASE_INSENSITIVE);
         Matcher matcher = pattern.matcher(fileToSend.getName());
         String response = "Server: My Java HTTP Server: 1.0\r\n";
         response += "Date: " + (new Date()).toString() + "\r\n";
-        if(matcher.find()){
-            BufferedImage bImage = ImageIO.read(new File(fileToSend.getPath()));
-            ByteArrayOutputStream bos = new ByteArrayOutputStream();
-            ImageIO.write(bImage, "jpeg", bos );
-            byte [] data = bos.toByteArray();
-            String encodedfile = new String(Base64.getEncoder().encode(data));
 
-            String htmlResponse = "<html><head></head><body><img src=\"data:image/jpeg;base64," + encodedfile + "\" alt=\"" + fileToSend.getName()+"\"></body></html>";
-            response += "Content-Type: text/html\r\n";
-            response += "Content-length: " +htmlResponse.length() +"\r\n";
-            response += "\r\n";
-            response += htmlResponse;
+        if(matcher.find()){
+            response = prepareAndReturnImageResponse(fileToSend, response);
         }
         else{
             response += "Content-Type: text/html\r\n";
@@ -56,10 +46,23 @@ public class ResponseCreator {
             response += "\r\n";
             response += String.join("",Files.readAllLines(fileToSend.toPath()));
         }
-
-
-
         return response;
     }
+
+    private String prepareAndReturnImageResponse(File fileToSend, String response) throws IOException {
+        BufferedImage bImage = ImageIO.read(new File(fileToSend.getPath()));
+        ByteArrayOutputStream bos = new ByteArrayOutputStream();
+        ImageIO.write(bImage, "jpeg", bos );
+        byte [] data = bos.toByteArray();
+        String encodedFile = new String(Base64.getEncoder().encode(data));
+
+        String htmlResponse = "<html><head></head><body><img src=\"data:image/jpeg;base64," + encodedFile + "\" alt=\"" + fileToSend.getName()+"\"></body></html>";
+        response += "Content-Type: text/html\r\n";
+        response += "Content-length: " +htmlResponse.length() +"\r\n";
+        response += "\r\n";
+        response += htmlResponse;
+        return response;
+    }
+
 
 }
