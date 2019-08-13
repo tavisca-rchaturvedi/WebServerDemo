@@ -4,7 +4,7 @@ pipeline {
         stage('Build') {
             steps {
                 sh script: '''
-                    gradlew build
+                    bash gradlew build
                     echo "I am in build step"
                 ''',
             label: "Building Project"
