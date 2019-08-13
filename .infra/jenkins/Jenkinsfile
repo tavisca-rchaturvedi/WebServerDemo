@@ -5,6 +5,7 @@ pipeline {
             steps {
                 sh script: '''
                     pwd
+                    dir
                     echo "I am in build step"
                     gradlew build
                 ''',
