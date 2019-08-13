@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.tavisca.workshops.RequestTests" tests="3" skipped="0" failures="0" errors="0" timestamp="2019-08-13T12:17:33" hostname="RENTLAPT0024" time="0.001">
+  <properties/>
+  <testcase name="uriOnARequest" classname="com.tavisca.workshops.RequestTests" time="0.0"/>
+  <testcase name="methodNameOnARequest" classname="com.tavisca.workshops.RequestTests" time="0.001"/>
+  <testcase name="httpVersionOnARequest" classname="com.tavisca.workshops.RequestTests" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.tavisca.workshops.ResponseTests" tests="3" skipped="0" failures="0" errors="0" timestamp="2019-08-13T12:17:33" hostname="RENTLAPT0024" time="0.006">
+  <properties/>
+  <testcase name="resourceFoundTest" classname="com.tavisca.workshops.ResponseTests" time="0.002"/>
+  <testcase name="resourceNotFoundTest" classname="com.tavisca.workshops.ResponseTests" time="0.002"/>
+  <testcase name="rootRequestResponse" classname="com.tavisca.workshops.ResponseTests" time="0.002"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
