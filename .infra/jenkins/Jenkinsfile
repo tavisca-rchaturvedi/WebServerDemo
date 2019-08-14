@@ -20,6 +20,7 @@ pipeline {
                 ''',
             label: "Running Unit Test Cases"
             }
+
         }
         stage('Static Code Analysis')
         {
@@ -49,6 +50,7 @@ pipeline {
             }
         }
     }
+
     post{
     	always{
 		deleteDir()
