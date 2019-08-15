@@ -37,8 +37,8 @@ pipeline {
             steps {
                 sh script: '''
                     echo "I am Building DockerImage ="
-                    sudo docker build -t my-web-server -f ./.infra/docker/Dockerfile .
-                    sudo docker commit my-web-server:latest
+                    docker build -t my-web-server -f ./.infra/docker/Dockerfile .
+                    docker commit my-web-server:latest
                     pwd
                     dir
                 ''',
