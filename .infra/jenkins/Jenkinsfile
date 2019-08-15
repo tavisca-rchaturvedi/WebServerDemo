@@ -1,9 +1,5 @@
 pipeline {
-    agent {
-        dockerfile{
-            filename './.infra/docker/Dockerfile'
-        }
-    }
+    agent any
     stages {
         stage('Build') {
             steps {
@@ -41,6 +37,7 @@ pipeline {
             steps {
                 sh script: '''
                     echo "I am Building DockerImage ="
+                    docker run -ti -v /var/run/docker.sock:/var/run/docker.sock docker
                     docker build -t my-web-server -f ./.infra/docker/Dockerfile .
                     docker commit my-web-server:latest
                     pwd
