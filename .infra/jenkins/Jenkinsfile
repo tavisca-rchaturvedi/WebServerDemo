@@ -37,9 +37,9 @@ pipeline {
             steps {
                 sh script: '''
                     echo "I am Building DockerImage ="
-                    docker run -ti -v /var/run/docker.sock:/var/run/docker.sock docker
-                    docker build -t my-web-server -f ./.infra/docker/Dockerfile .
-                    docker commit my-web-server:latest
+                    winpty docker run -ti -v /var/run/docker.sock:/var/run/docker.sock docker
+                    winpty docker build -t my-web-server -f ./.infra/docker/Dockerfile .
+                    winpty docker commit my-web-server:latest
                     pwd
                     dir
                 ''',
@@ -51,8 +51,8 @@ pipeline {
             steps {
                 sh script: '''
                     echo "I am Pubishing DockerImage"
-                    docker tag my-web-server:latest chaturvedirishabh91/my-web-server:latest
-                    docker push chaturvedirishabh91/my-web-server:latest
+                    winpty docker tag my-web-server:latest chaturvedirishabh91/my-web-server:latest
+                    winpty docker push chaturvedirishabh91/my-web-server:latest
                 ''',
             label: "Publishing Docker Image"
             }
