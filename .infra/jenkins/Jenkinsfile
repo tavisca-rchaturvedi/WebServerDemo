@@ -37,18 +37,11 @@ pipeline {
             steps {
                 sh script: '''
                     echo "I am Building DockerImage ="
-
                     docker build -t my-web-server -f ./.infra/docker/Dockerfile .
                     docker commit my-web-server:latest
                     pwd
                     dir
                 ''',
-                docker.withRegistry('https://cloud.docker.com', 'chaturvedirishabh91') {
-
-                    def customImage = docker.build("my-web-server:${env.BUILD_ID}")
-                    /* Push the container to the custom Registry */
-                    customImage.push()
-                },
             label: "Building Docker Image"
             }
         }
