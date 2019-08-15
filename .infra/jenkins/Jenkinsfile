@@ -37,11 +37,18 @@ pipeline {
             steps {
                 sh script: '''
                     echo "I am Building DockerImage ="
-                    sh 'docker build -t my-web-server -f ./.infra/docker/Dockerfile .'
-                    sh 'docker commit my-web-server:latest'
+
+                    docker build -t my-web-server -f ./.infra/docker/Dockerfile .
+                    docker commit my-web-server:latest
                     pwd
                     dir
                 ''',
+                docker.withRegistry('https://cloud.docker.com', 'chaturvedirishabh91') {
+
+                    def customImage = docker.build("my-web-server:${env.BUILD_ID}")
+                    /* Push the container to the custom Registry */
+                    customImage.push()
+                },
             label: "Building Docker Image"
             }
         }
@@ -50,8 +57,8 @@ pipeline {
             steps {
                 sh script: '''
                     echo "I am Pubishing DockerImage"
-                    sh 'docker tag my-web-server:latest chaturvedirishabh91/my-web-server:latest'
-                    sh 'docker push chaturvedirishabh91/my-web-server:latest'
+                    docker tag my-web-server:latest chaturvedirishabh91/my-web-server:latest
+                    docker push chaturvedirishabh91/my-web-server:latest
                 ''',
             label: "Publishing Docker Image"
             }
