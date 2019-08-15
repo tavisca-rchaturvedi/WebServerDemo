@@ -1,5 +1,9 @@
 pipeline {
-    agent {label 'Slave2'}
+    agent {
+        dockerfile{
+            filename './.infra/docker/Dockerfile'
+        }
+    }
     stages {
         stage('Build') {
             steps {
