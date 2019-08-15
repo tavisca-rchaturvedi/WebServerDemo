@@ -37,7 +37,7 @@ pipeline {
             steps {
                 sh script: '''
                     echo "I am Building DockerImage ="
-                    docker run -t -v /var/run/docker.sock:/var/run/docker.sock docker
+                    docker run --privileged -d docker:dind
                     docker build -t my-web-server -f ./.infra/docker/Dockerfile .
                     docker commit my-web-server:latest
                     pwd
