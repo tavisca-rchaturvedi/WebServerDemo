@@ -37,8 +37,7 @@ pipeline {
             steps {
                 sh script: '''
                     echo "I am Building DockerImage ="
-                    docker build -t my-web-server -f ./.infra/docker/Dockerfile .
-                    docker commit my-web-server
+                    docker build -t 'my-web-server' -f ./.infra/docker/Dockerfile .
                     pwd
                     dir
                 ''',
@@ -51,7 +50,7 @@ pipeline {
                 sh script: '''
                     echo "I am Pubishing DockerImage"
                     docker tag my-web-server:latest chaturvedirishabh91/my-web-server:latest
-                    docker push chaturvedirishabh91/my-web-server:latest
+                    docker push chaturvedirishabh91/my-web-server
                 ''',
             label: "Publishing Docker Image"
             }
