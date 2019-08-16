@@ -49,7 +49,7 @@ pipeline {
             steps {
                 sh script: '''
                     echo "I am Pubishing DockerImage"
-                    cat ~/my_password.txt | docker login --username chaturvedirishabh91 --password-stdin
+                    wipty cat ~/my_password.txt | docker login --username chaturvedirishabh91 --password-stdin
                     docker tag my-web-server:latest chaturvedirishabh91/my-web-server:latest
                     docker push chaturvedirishabh91/my-web-server
                 ''',
