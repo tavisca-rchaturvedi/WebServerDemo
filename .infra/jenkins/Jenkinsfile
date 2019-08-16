@@ -47,13 +47,15 @@ pipeline {
         stage('Publish DockerImage')
         {
             steps {
-                withCredentials([usernamePassword(credentialsId: 'docker'), usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD'])
-                sh script: '''
-                    echo "I am Pubishing DockerImage"
-                    docker tag my-web-server:latest chaturvedirishabh91/my-web-server:latest
-                    docker push chaturvedirishabh91/my-web-server
-                ''',
-            label: "Publishing Docker Image"
+                withCredentials([usernamePassword(credentialsId: 'docker'), usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD']){
+                    sh script: '''
+                        echo "I am Pubishing DockerImage"
+                        docker tag my-web-server:latest chaturvedirishabh91/my-web-server:latest
+                        docker push chaturvedirishabh91/my-web-server
+                    ''',
+                    label: "Publishing Docker Image"
+                }
+
             }
         }
     }
