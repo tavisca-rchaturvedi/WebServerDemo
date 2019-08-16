@@ -38,7 +38,7 @@ pipeline {
                 sh script: '''
                     echo "I am Building DockerImage ="
                     docker build -t my-web-server -f ./.infra/docker/Dockerfile .
-                    docker commit my-web-server:latest
+                    docker commit my-web-server
                     pwd
                     dir
                 ''',
