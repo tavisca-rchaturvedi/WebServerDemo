@@ -31,7 +31,7 @@ pipeline {
                     ./gradlew sonarqube \
                       -Dsonar.projectKey=com.tavisca.workshops \
                       -Dsonar.host.url=http://localhost:9000 \
-                      -Dsonar.login=9914d62356172830c9a62c88ea07e26776a9bd0c
+                      -Dsonar.login=8053671fe7518965c7cd3e0e04117d80db0fcb0a
                 ''',
             label: "Running Sonarqube Scan"
             }
