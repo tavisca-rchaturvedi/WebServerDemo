@@ -1,6 +1,8 @@
 plugins {
     id 'java'
+    id "org.sonarqube" version "2.7"
 }
+
 
 group 'com.tavisca.workshops.socket'
 version '1.0-SNAPSHOT'
@@ -18,6 +20,14 @@ dependencies {
 test {
     testLogging {
         events "passed", "skipped", "failed"
+    }
+}
+
+sourceSets {
+    main {
+        resources {
+            srcDirs "www/", "src/main/configs"
+        }
     }
 }
 
