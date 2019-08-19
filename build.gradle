@@ -25,7 +25,7 @@ test {
 sourceSets {
     main {
         resources {
-            srcDirs "www/", "src/main/configs"
+            srcDirs "www/", "src/main"
         }
     }
 }
