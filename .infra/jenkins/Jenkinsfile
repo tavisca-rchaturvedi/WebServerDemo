@@ -58,7 +58,7 @@ pipeline {
                     echo "I am Pubishing DockerImage"
                     cat ~/my_password.txt | docker login --username chaturvedirishabh91 --password-stdin
                     docker tag my-web-server:latest chaturvedirishabh91/my-web-server:latest
-                    docker push --force chaturvedirishabh91/my-web-server
+                    docker push chaturvedirishabh91/my-web-server:latest
                 ''',
                 label: "Publishing Docker Image"
             }
