@@ -33,7 +33,7 @@ pipeline {
                       -Dsonar.organization=tavisca-rchaturvedi \
                       -Dsonar.host.url=https://sonarcloud.io \
                       -Dsonar.login=b77f301d0cafed11a665e535f897a68dbff428a7 \
-                      -Dsonar.coverageReportPaths=build/test-results/test/
+                      -Dsonar.junit.reportPaths=build/test-results/test/
                 ''',
             label: "Running Sonarqube Scan"
             }
