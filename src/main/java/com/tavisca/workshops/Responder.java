@@ -1,6 +1,6 @@
 package com.tavisca.workshops;
 
 public interface Responder{
-    String baseAddress = "resources/main";
+    String baseAddress = "www/";
     byte[] getResponse(ResponseCreator responseCreator, RequestParser requestParser);
 }
