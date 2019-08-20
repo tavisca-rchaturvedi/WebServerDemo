@@ -36,7 +36,7 @@ pipeline {
                       -Dsonar.login=b77f301d0cafed11a665e535f897a68dbff428a7 \
                       -Dsonar.dynamicAnalysis=reuseReports \
                       -Dsonar.junit.reportPaths=build/test-results/test/ \
-                      -Dsonar.coverage.jacoco.xmlReportPaths=build/jacocoReportDir
+                      -Dsonar.coverage.jacoco.xmlReportPaths=build/jacocoReportDir/test/html
                 ''',
             label: "Running Sonarqube Scan"
             }
