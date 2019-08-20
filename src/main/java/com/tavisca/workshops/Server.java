@@ -33,15 +33,19 @@ class Server implements Runnable {
     }
 
     public static void main(String[] args) throws IOException {
-        ServerSocket serverSocket = new ServerSocket(8000);
-        Log.infoLog("Server waiting at port 8000");
 
-        while(true){
-            Socket socket = serverSocket.accept();
-            Log.infoLog("Socket Accepted");
-            Thread t = new Thread(new Server(socket));
-            t.start();
+        try(ServerSocket serverSocket = new ServerSocket(8000)) {
+            Log.infoLog("Server waiting at port 8000");
+
+            while(true){
+                Socket socket = serverSocket.accept();
+                Log.infoLog("Socket Accepted");
+                Thread t = new Thread(new Server(socket));
+                t.start();
+            }
         }
-
+        catch(Exception e){
+            Log.warningLog(e.getMessage());
+        }
     }
 }
