@@ -28,6 +28,7 @@ pipeline {
             steps {
                 sh script: '''
                     echo "I am in Sonarqube scan"
+                    ./gradlew jacocoTestReport
                     ./gradlew sonarqube \
                       -Dsonar.projectKey=tavisca-rchaturvedi_WebServerDemo \
                       -Dsonar.organization=tavisca-rchaturvedi \
