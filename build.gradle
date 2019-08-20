@@ -1,6 +1,7 @@
 plugins {
     id 'java'
     id "org.sonarqube" version "2.7"
+    id "jococo"
 }
 
 group 'com.tavisca.workshops.socket'
@@ -20,6 +21,11 @@ test {
     testLogging {
         events "passed", "skipped", "failed"
     }
+}
+
+jacoco {
+    toolVersion = "0.8.4"
+    reportsDir = file("$buildDir/jacocoReportDir")
 }
 
 sourceSets {
