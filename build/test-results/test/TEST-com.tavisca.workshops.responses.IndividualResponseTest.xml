@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.tavisca.workshops.responses.IndividualResponseTest" tests="6" skipped="0" failures="0" errors="0" timestamp="2019-08-13T12:17:33" hostname="RENTLAPT0024" time="0.047">
+  <properties/>
+  <testcase name="genericResponseForResourceNotFoundTest" classname="com.tavisca.workshops.responses.IndividualResponseTest" time="0.01"/>
+  <testcase name="errorResponseTest" classname="com.tavisca.workshops.responses.IndividualResponseTest" time="0.007"/>
+  <testcase name="genericResponseForResourceFoundTest" classname="com.tavisca.workshops.responses.IndividualResponseTest" time="0.009"/>
+  <testcase name="okResponseTest" classname="com.tavisca.workshops.responses.IndividualResponseTest" time="0.005"/>
+  <testcase name="genericResponseForRootTest" classname="com.tavisca.workshops.responses.IndividualResponseTest" time="0.007"/>
+  <testcase name="resourceFoundResponseTest" classname="com.tavisca.workshops.responses.IndividualResponseTest" time="0.005"/>
+  <system-out><![CDATA[HTTP/1.1 200 OK
+HTTP/1.1 200 OK
+]]></system-out>
+  <system-err><![CDATA[Aug 13, 2019 5:47:33 PM com.tavisca.workshops.logger.Log warningLog
+WARNING: File does not exist
+Aug 13, 2019 5:47:33 PM com.tavisca.workshops.logger.Log warningLog
+WARNING: HTTP/1.1 404
+Server: My Java HTTP Server: 1.0
+Date: Tue Aug 13 17:47:33 IST 2019
+Content-Type: text/html
+Content-length: 51
+
+<html><body><h1>Page not found!!</h1></body></html>
+Aug 13, 2019 5:47:33 PM com.tavisca.workshops.logger.Log warningLog
+WARNING: File does not exist
+Aug 13, 2019 5:47:33 PM com.tavisca.workshops.logger.Log warningLog
+WARNING: HTTP/1.1 404
+Server: My Java HTTP Server: 1.0
+Date: Tue Aug 13 17:47:33 IST 2019
+Content-Type: text/html
+Content-length: 51
+
+<html><body><h1>Page not found!!</h1></body></html>
+Aug 13, 2019 5:47:33 PM com.tavisca.workshops.logger.Log infoLog
+INFO: File exists with file name hello.html
+Aug 13, 2019 5:47:33 PM com.tavisca.workshops.logger.Log infoLog
+INFO: HTTP/1.1 200 OK
+Server: My Java HTTP Server: 1.0
+Date: Tue Aug 13 17:47:33 IST 2019
+Content-Type: text/html
+Content-length: 54
+
+<html><body><H1>Hello! How are you?</H1></body></html>
+Aug 13, 2019 5:47:33 PM com.tavisca.workshops.logger.Log infoLog
+INFO: HTTP/1.1 200 OK
+Server: My Java HTTP Server: 1.0
+Date: Tue Aug 13 17:47:33 IST 2019
+Content-Type: text/html
+Content-length: 147
+
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><title>Title</title></head><body><H1>You are successfully connected!!</H1></body></html>
+Aug 13, 2019 5:47:33 PM com.tavisca.workshops.logger.Log infoLog
+INFO: This will send 200 response
+Aug 13, 2019 5:47:33 PM com.tavisca.workshops.logger.Log infoLog
+INFO: HTTP/1.1 200 OK
+Server: My Java HTTP Server: 1.0
+Date: Tue Aug 13 17:47:33 IST 2019
+Content-Type: text/html
+Content-length: 147
+
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><title>Title</title></head><body><H1>You are successfully connected!!</H1></body></html>
+Aug 13, 2019 5:47:33 PM com.tavisca.workshops.logger.Log infoLog
+INFO: This will send 200 response
+Aug 13, 2019 5:47:33 PM com.tavisca.workshops.logger.Log infoLog
+INFO: File exists with file name hello.html
+Aug 13, 2019 5:47:33 PM com.tavisca.workshops.logger.Log infoLog
+INFO: HTTP/1.1 200 OK
+Server: My Java HTTP Server: 1.0
+Date: Tue Aug 13 17:47:33 IST 2019
+Content-Type: text/html
+Content-length: 54
+
+<html><body><H1>Hello! How are you?</H1></body></html>
+]]></system-err>
+</testsuite>

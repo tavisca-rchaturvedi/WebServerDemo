@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.tavisca.workshops.ClientHandlerTests" tests="2" skipped="0" failures="0" errors="0" timestamp="2019-08-13T12:17:33" hostname="RENTLAPT0024" time="0.167">
+  <properties/>
+  <testcase name="outputStreamTest" classname="com.tavisca.workshops.ClientHandlerTests" time="0.005"/>
+  <testcase name="prepareResponseFromRequestTest" classname="com.tavisca.workshops.ClientHandlerTests" time="0.161"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[Aug 13, 2019 5:47:33 PM com.tavisca.workshops.logger.Log infoLog
+INFO: 13 is the thread running for -1 with request /
+Aug 13, 2019 5:47:33 PM com.tavisca.workshops.logger.Log infoLog
+INFO: HTTP/1.1 200 OK
+Server: My Java HTTP Server: 1.0
+Date: Tue Aug 13 17:47:33 IST 2019
+Content-Type: text/html
+Content-length: 147
+
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><title>Title</title></head><body><H1>You are successfully connected!!</H1></body></html>
+Aug 13, 2019 5:47:33 PM com.tavisca.workshops.logger.Log infoLog
+INFO: This will send 200 response
+]]></system-err>
+</testsuite>

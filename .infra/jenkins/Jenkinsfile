@@ -1,0 +1,76 @@
+pipeline {
+    agent any
+    stages {
+        stage('Build') {
+            steps {
+                sh script: '''
+                    pwd
+                    dir
+                    echo "I am in build step"
+                    ./gradlew build -x test
+                ''',
+            label: "Building Project"
+            }
+        }
+        stage('Test')
+        {
+            steps {
+                sh script: '''
+                    echo "I am in Test step"
+                    ./gradlew test
+                ''',
+            label: "Running Unit Test Cases"
+            }
+
+        }
+        stage('Static Code Analysis')
+        {
+            steps {
+                sh script: '''
+                    echo "I am in Sonarqube scan"
+                    ./gradlew jacocoTestReport
+                    ./gradlew sonarqube \
+                      -Dsonar.projectKey=tavisca-rchaturvedi_WebServerDemo \
+                      -Dsonar.organization=tavisca-rchaturvedi \
+                      -Dsonar.host.url=https://sonarcloud.io \
+                      -Dsonar.login=b77f301d0cafed11a665e535f897a68dbff428a7 \
+                      -Dsonar.dynamicAnalysis=reuseReports \
+                      -Dsonar.junit.reportPaths=build/test-results/test/ \
+                      -Dsonar.coverage.jacoco.xmlReportPaths=build/jacocoReportDir/test/html
+                ''',
+            label: "Running Sonarqube Scan"
+            }
+        }
+        stage('Build DockerImage')
+        {
+            steps {
+                sh script: '''
+                    echo "I am Building DockerImage ="
+                    docker build -t 'my-web-server' -f ./.infra/docker/Dockerfile .
+                    pwd
+                    dir
+                ''',
+            label: "Building Docker Image"
+            }
+        }
+        stage('Publish DockerImage')
+        {
+            steps {
+                sh script: '''
+                    echo "I am Pubishing DockerImage"
+                    cat ~/my_password.txt | docker login --username chaturvedirishabh91 --password-stdin
+                    docker tag my-web-server:latest chaturvedirishabh91/my-web-server:latest
+                    docker push chaturvedirishabh91/my-web-server:latest
+                ''',
+                label: "Publishing Docker Image"
+            }
+        }
+    }
+
+    post{
+    	always{
+		deleteDir()
+	}
+    }
+}
+
